@@ -1,0 +1,35 @@
+site_name: Kimai for the Uninitiated
+site_description: A beginner-oriented guide to configuring and using Kimai through its web interface.
+site_url: https://wesley-dean.github.io/kimai-for-the-uninitiated/
+repo_url: https://github.com/wesley-dean/kimai-for-the-uninitiated
+repo_name: wesley-dean/kimai-for-the-uninitiated
+
+theme:
+  name: material
+  features:
+    - navigation.indexes
+    - navigation.sections
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+
+nav:
+  - Home: index.md
+  - Start here:
+      - start-here/index.md
+      - How Kimai thinks about your work: start-here/how-kimai-thinks.md
+      - Plan your setup: start-here/plan-your-setup.md
+  - References: references.md
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - pymdownx.details
+  - pymdownx.superfences
+
+plugins:
+  - search
+
+strict: true

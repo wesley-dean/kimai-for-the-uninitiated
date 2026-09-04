@@ -20,6 +20,11 @@ nav:
       - start-here/index.md
       - How Kimai thinks about your work: start-here/how-kimai-thinks.md
       - Plan your setup: start-here/plan-your-setup.md
+  - Using Kimai:
+      - using-kimai/index.md
+      - Record time: using-kimai/record-time.md
+      - Review time before billing: using-kimai/review-time.md
+      - Create and manage invoices: using-kimai/create-invoice.md
   - References: references.md
 
 markdown_extensions:
@@ -27,7 +32,11 @@ markdown_extensions:
   - attr_list
   - md_in_html
   - pymdownx.details
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
 
 plugins:
   - search

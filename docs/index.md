@@ -24,8 +24,10 @@ Use this guide when your questions sound more like these:
 
 Start with [Start here](start-here/index.md).  The first few pages build the mental model that makes the rest of Kimai easier to understand.
 
-The eventual beginner journey will move from planning through customer, project, activity, rate, time-entry, and invoice configuration.  More advanced material will be layered around that path rather than placed in front of it.
+When you are ready to work with actual records, continue with [Using Kimai](using-kimai/index.md), which walks through recording time, reviewing it before billing, and creating and managing invoices.
+
+More advanced administration will be layered around that beginner path rather than placed in front of it.
 
 ## Project status
 
-This guide is being built in public.  The initial pages establish the concepts and decisions a new administrator needs before entering real data.
+This guide is being built in public.  The current material establishes the core data model and the first day-to-day workflow.  Additional setup and administration pages will be added as they become useful to the beginner journey.

@@ -14,9 +14,10 @@ Kimai also recommends creating a customer representing your own organization.  T
 
 A small fictional starting point might be:
 
-```text
-Example Consulting
-Acme Manufacturing
+```mermaid
+flowchart LR
+    K[Customers] --> O["Example Consulting"]
+    K --> A["Acme Manufacturing"]
 ```
 
 ## Use projects for meaningful bodies of work
@@ -25,10 +26,10 @@ A project answers: **what engagement or body of work is this part of?**
 
 For Acme Manufacturing, you might eventually have:
 
-```text
-Acme Manufacturing
-    Security Assessment
-    Ongoing Consulting
+```mermaid
+flowchart TB
+    A["Acme Manufacturing"] --> S["Security Assessment"]
+    A --> O["Ongoing Consulting"]
 ```
 
 Avoid creating a new project merely because a new week or billing month began unless the business relationship genuinely works that way.  Reporting and invoicing are more useful when project boundaries correspond to something meaningful outside Kimai.
@@ -41,11 +42,12 @@ An activity answers: **what kind of work was performed?**
 
 A useful small vocabulary might be:
 
-```text
-Research
-Meetings
-Engineering
-Documentation
+```mermaid
+flowchart LR
+    A[Activities] --> R[Research]
+    A --> M[Meetings]
+    A --> E[Engineering]
+    A --> D[Documentation]
 ```
 
 Kimai supports both project-specific and global activities.  Global activities are useful for kinds of work that recur across projects.  The current Kimai setup documentation also notes an important asymmetry: a project-specific activity can be converted to a global activity, while a global activity cannot simply be converted the other way around.  Kimai therefore suggests starting global when you are unsure.
@@ -70,20 +72,17 @@ This is especially worth postponing because assigning a team changes visibility:
 
 Before entering anything in Kimai, write down a candidate structure like this:
 
-```text
-Customer: Example Consulting
-Project: Internal
-Activities:
-    Administration
-    Meetings
+```mermaid
+flowchart TB
+    EC["Example Consulting"] --> EI[Internal]
+    EI --> EA[Administration]
+    EI --> EM[Meetings]
 
-Customer: Acme Manufacturing
-Project: Security Assessment
-Activities:
-    Research
-    Meetings
-    Engineering
-    Documentation
+    AC["Acme Manufacturing"] --> AS["Security Assessment"]
+    AS --> AR[Research]
+    AS --> AM[Meetings]
+    AS --> AE[Engineering]
+    AS --> AD[Documentation]
 ```
 
 Then ask:
@@ -102,4 +101,4 @@ That suggests a useful operating principle for the rest of this guide: once an o
 
 ## Next
 
-Once this structure feels understandable, the next stage will be reviewing the few instance defaults that materially affect how time is recorded.  We will add that page as the beginner journey grows.
+Once the structure is understandable, the practical loop is to record time, review it, and eventually turn eligible time into an invoice.  Continue with [Using Kimai](../using-kimai/index.md) for that workflow.

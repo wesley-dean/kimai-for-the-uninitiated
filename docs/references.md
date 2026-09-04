@@ -6,6 +6,8 @@ The official Kimai documentation is the authoritative source for product behavio
 
 - [Kimai documentation](https://www.kimai.org/documentation/)
 - [Initial setup](https://www.kimai.org/documentation/initial-setup.html)
+- [Timesheet](https://www.kimai.org/documentation/timesheet.html)
+- [Billable](https://www.kimai.org/documentation/billable.html)
 - [Customers](https://www.kimai.org/documentation/customer.html)
 - [Projects](https://www.kimai.org/documentation/project.html)
 - [Activities](https://www.kimai.org/documentation/activity.html)
@@ -14,5 +16,6 @@ The official Kimai documentation is the authoritative source for product behavio
 - [Teams](https://www.kimai.org/documentation/teams.html)
 - [Tags](https://www.kimai.org/documentation/tags.html)
 - [Invoices](https://www.kimai.org/documentation/invoices.html)
+- [Invoice templates](https://www.kimai.org/documentation/invoice-templates.html)
 
 References should be expanded as new sections of the guide are written.  Links here supplement, rather than replace, source links near claims where the authoritative behavior matters.

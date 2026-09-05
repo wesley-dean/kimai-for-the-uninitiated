@@ -24,6 +24,7 @@ nav:
       - using-kimai/index.md
       - Record time: using-kimai/record-time.md
       - Review time before billing: using-kimai/review-time.md
+      - Fixed-price fees and quantities: using-kimai/fixed-price-fees.md
       - Create and manage invoices: using-kimai/create-invoice.md
   - References: references.md
 

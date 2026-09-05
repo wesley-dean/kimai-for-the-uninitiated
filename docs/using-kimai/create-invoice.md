@@ -54,18 +54,84 @@ Do not use invoice creation as the place where you discover incorrect time recor
 
 Only billable items are included in invoices.  If time is unexpectedly absent, check its date range, customer/project/activity classification, billable state, and whether it was already exported or invoiced.
 
-## Create the invoice through the web interface
+## Why "Create invoice" opens a search page
 
-Open **Invoices** and begin creating a new invoice.  The creation flow is driven by the set of records you want to bill.
+This is expected behavior in current Kimai.
+
+Kimai does **not** begin invoice creation with a blank invoice form.  The **Invoices > Create invoice** page is first a search/filter screen that asks Kimai which existing billable records should be considered for invoicing.
+
+```mermaid
+flowchart LR
+    A[Invoices > Create invoice] --> F[Filter eligible records]
+    F --> S[Search]
+    S --> R{Eligible records found?}
+    R -->|No| N[Nothing to invoice]
+    R -->|Yes| P[Customer preview rows]
+    P --> V[Preview invoice]
+    P --> C[Create/save invoice]
+```
+
+The first screen therefore contains filters such as billing period, customer, project, activity, tags, users, teams, and export state.  It is selecting source records, not editing an invoice document.
+
+This distinction is easy to miss because the menu says **Create invoice**, while the first page looks like a search page.
+
+## Create the invoice through the web interface
 
 For a typical customer invoice:
 
-1. Select the customer receiving the invoice.
-2. Select the intended billing period.
-3. Narrow the selection by project or other available filters when you do not want every eligible entry in that period.
-4. Select or confirm the invoice template.
-5. Review the resulting invoice items, grouping, hours/amounts, tax, and total.
-6. Create the invoice only when the result matches the reviewed source time.
+1. Make sure the billable source records already exist.  For hourly work, those are ordinary billable time entries.  For [fixed-price fees](fixed-price-fees.md), those are the billable fixed-price records that represent the units you intend to charge.
+2. Open **Invoices > Create invoice**.
+3. Set the billing period that contains the records you want to invoice.
+4. Select the customer receiving the invoice.
+5. Narrow the result by project, activity, tags, user, or other filters if you do not want every eligible record for that customer and period.
+6. Leave the export-state filter at its normal unprocessed setting unless you deliberately need previously processed records.
+7. Click **Search**.
+8. Kimai then builds one or more customer preview rows from the eligible records it found.
+9. Expand a customer row if you want to inspect the underlying entries and confirm their quantities, rates, durations, and totals.
+10. Use the **Preview** action to inspect the rendered invoice before committing it.
+11. Confirm the invoice template and invoice date for that customer if the interface presents those controls.
+12. Use the invoice/save action on the customer row to create the invoice.
+
+Creating the invoice is the final step in this flow, not the first.
+
+### If no create button appears
+
+Kimai only renders the customer preview and create actions when the search produces an invoice model containing eligible records.
+
+If the search returns nothing, check these prerequisites:
+
+- an invoice template exists;
+- the source time/fixed-price records already exist;
+- the records belong to the intended customer through their project;
+- the records fall inside the selected date range;
+- the records are billable;
+- the customer, project, and activity are not preventing automatic billability;
+- the records have not already been invoiced/exported, unless you intentionally search for processed records;
+- your user has permission to create invoices and access the relevant customer data.
+
+Stock Kimai does not use this screen to create an empty manual invoice with arbitrary lines.  It creates the invoice from the records returned by this search.
+
+### Example: three fixed-price seats
+
+Suppose you have already recorded three fixed-price units for a customer:
+
+| Record | Activity | Fixed price |
+| --- | --- | ---: |
+| 1 | Google Workspace seat | $25 |
+| 2 | Google Workspace seat | $25 |
+| 3 | Google Workspace seat | $25 |
+
+To invoice those records:
+
+1. Open **Invoices > Create invoice**.
+2. Select the customer.
+3. Choose a date range containing all three records.
+4. Optionally filter to the **Google Workspace seat** activity.
+5. Click **Search**.
+6. Confirm that Kimai finds the three records and that the preview total is $75.
+7. If your invoice template groups lines by activity, verify that the rendered result represents the three matching units as intended.
+8. Preview the invoice.
+9. Create it only after the source records and total are correct.
 
 The exact fields shown can vary with configuration and installed Kimai version, but the underlying rule is stable: the invoice is built from the eligible records selected by the invoice query, and only billable items qualify.
 
@@ -131,10 +197,12 @@ Before creating the first real customer invoice, a useful rehearsal is:
 
 1. Create a few disposable test time entries for a test or internal context.
 2. Confirm their rates and billable state.
-3. Generate an invoice using the intended template.
-4. Inspect the generated document carefully.
-5. Confirm the invoice appears in **Invoice history**.
-6. Confirm the source time is now treated as processed.
+3. Search for them from **Invoices > Create invoice**.
+4. Preview the generated invoice using the intended template.
+5. Inspect the generated document carefully.
+6. Create the invoice only after the preview is correct.
+7. Confirm the invoice appears in **Invoice history**.
+8. Confirm the source time is now treated as processed.
 
 Be deliberate about invoice numbers while testing.  Once real invoice numbering begins, treat generated invoices as accounting history and prefer cancellation over deletion.  The official initial-setup page suggests deleting a test invoice, while the current invoice reference warns generally against deletion because of numbering consequences; this guide follows the more conservative rule once production numbering matters.
 
